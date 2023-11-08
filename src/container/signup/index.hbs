@@ -18,10 +18,21 @@
                 <span name="email" class="form__error">Помилка</span>
             </div>
             <div class="form__item">
+                {{> field-select action="signupForm.change" name="role" placeholder="Оберіть роль"
+                list=data.role label="Роль"}}
+                <span name="role" class="form__error">Помилка</span>
+            </div>
+            <div class="form__item">
                 {{>field-password action="signupForm.change" name="password" label="Пароль"
                 placeholder="Введіть пароль"}}
 
                 <span name="password" class="form__error">Помилка</span>
+            </div>
+            <div class="form__item">
+                {{>field-checkbox action="signupForm.change" name="isConfirm"
+                label="Ви погоджуєтеся з правилами сервіса"}}
+
+                <span name="isConfirm" class="form__error">Помилка</span>
             </div>
             <button class="button" onclick="signupForm.submit()" type="button">Зареєструватися</button>
             <span class="alert alert--error">Увага, помилка!</span>

@@ -49,8 +49,15 @@
 </body>
 
 {{!-- Підключаємо файл скриптів container --}}
-<script src="dist/js/container/signup/index.js"></script>
-<script src="dist/js/component/back-button/index.js"></script>
+
+<script src="dist/js/container/{{name}}/index.js"></script>
+
+{{#each component}}
+
+{{!-- Підключаємо файл скриптів component --}}
+
+<script src="dist/js/component/{{this}}/index.js"></script>
+{{/each}}
 
 
 

@@ -1,5 +1,5 @@
 @use '../../style' as s;
-@use '../field/' as field;
+@use '../field/index.scss' as field;
 
 .field--password {
 
