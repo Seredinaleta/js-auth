@@ -7,7 +7,7 @@ class User {
 
   static #list = []
 
-  constructor(email, password, role) {
+  constructor({ email, password, role }) {
     this.email = email
     this.password = password
     this.role = User.#convertRole(role)
@@ -18,7 +18,7 @@ class User {
     if (isNaN(role)) {
       role = this.USER_ROLE.USER
     }
-    role = Object.values(USER_ROLE).includes(role)
+    role = Object.values(this.USER_ROLE).includes(role)
       ? role
       : this.USER_ROLE.USER
 
@@ -27,7 +27,16 @@ class User {
 
   static create(data) {
     const user = new User(data)
+    console.log(user)
     this.#list.push(user)
+    console.log(this.#list)
+  }
+
+  static getByEmail(email) {
+    return (
+      this.#list.find((user) => (user.email = email)) ||
+      null
+    )
   }
 }
 

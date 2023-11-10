@@ -29,13 +29,19 @@
                 <span name="password" class="form__error">Помилка</span>
             </div>
             <div class="form__item">
+                {{>field-password action="signupForm.change" name="passwordAgain" label="Пароль ще раз"
+                placeholder="Введіть пароль"}}
+
+                <span name="passwordAgain" class="form__error">Помилка</span>
+            </div>
+            <div class="form__item">
                 {{>field-checkbox action="signupForm.change" name="isConfirm"
                 label="Ви погоджуєтеся з правилами сервіса"}}
 
                 <span name="isConfirm" class="form__error">Помилка</span>
             </div>
-            <button class="button" onclick="signupForm.submit()" type="button">Зареєструватися</button>
-            <span class="alert alert--error">Увага, помилка!</span>
+            <button class="button button--disabled" onclick="signupForm.submit()" type="button">Зареєструватися</button>
+            <span class="alert alert--disabled">Увага, помилка!</span>
 
     </form>
 </div>

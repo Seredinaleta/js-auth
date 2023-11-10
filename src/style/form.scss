@@ -13,7 +13,7 @@
   }
 
   &__error {
-    color:s.color("red");
+   color:s.color(red);
    font-size: 12px;
    display: none;
 
@@ -25,7 +25,7 @@
  }
 
 .button {
-  color:s.color("white");
+  color:s.color(white);
   background: s.color("main");
   padding: s.space(4) s.space(8);
   border-radius: 10px;
@@ -36,6 +36,16 @@
     opacity:0.3
   }
 
+  &--disabled {
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover, &:active {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+  }
 }
 .alert {
   border: 1px solid transparent;
@@ -54,5 +64,13 @@
    &--progress {
     border-color: s.color(blue);
     color:s.color("blue")
+  }
+  &--disabled {
+    display: none;
+  }
+}
+.validation {
+  &--active {
+    border-color: s.color(red) !important;
   }
 }
