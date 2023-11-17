@@ -17,7 +17,7 @@ class FieldSelect {
   }
 
   static change = (target) => {
-    console.log(target)
+    // console.log(target)
     //===
 
     const parent = target.parentElement.parentElement

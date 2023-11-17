@@ -74,3 +74,15 @@
     border-color: s.color(red) !important;
   }
 }
+.link {
+  color: s.color(main);
+  font-weight: 700;
+  
+  @include s.click;
+
+  &__prefix {
+    color: s.color(light);
+    font-weight: 400;
+    
+  }
+}
