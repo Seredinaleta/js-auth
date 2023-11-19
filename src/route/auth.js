@@ -216,6 +216,11 @@ router.post('/recovery-confirm', function (req, res) {
 
 // ↙️ тут вводимо шлях (PATH) до сторінки
 router.get('/signup-confirm', function (req, res) {
+  const { renew, email } = req.query
+
+  if (renew) {
+    Confirm.create(email)
+  }
   // res.render генерує нам HTML сторінку
 
   // ↙️ cюди вводимо назву файлу з сontainer
@@ -283,10 +288,7 @@ router.post('/signup-confirm', function (req, res) {
 // ↙️ тут вводимо шлях (PATH) до сторінки
 router.get('/login', function (req, res) {
   // res.render генерує нам HTML сторінку
-  const { renew, email } = req.query
-  if (renew) {
-    Confirm.create(email)
-  }
+
   // ↙️ cюди вводимо назву файлу з сontainer
   return res.render('login', {
     // вказуємо назву контейнера
@@ -309,10 +311,9 @@ router.post('/login', function (req, res) {
 
   if (!email || !password) {
     return res.status(400).json({
-      message: `Помилка. Заповніть поля`,
+      message: `Помилка. Обов'язкові поля відсутні`,
     })
   }
-
   try {
     const user = User.getByEmail(email)
 
@@ -322,13 +323,14 @@ router.post('/login', function (req, res) {
           'Помилка.Користувача з таким email не знайдено',
       })
     }
-
     if (user.password !== password) {
       return res.status(400).json({
         message: 'Помилка. Пароль не підходить',
       })
     }
-
+    //.......
+    Confirm.create(user.email)
+    //......
     const session = Session.create(user)
 
     return res.status(200).json({
