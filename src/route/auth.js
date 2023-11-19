@@ -316,7 +316,6 @@ router.post('/login', function (req, res) {
   }
   try {
     const user = User.getByEmail(email)
-
     if (!user) {
       return res.status(400).json({
         message:
@@ -328,11 +327,11 @@ router.post('/login', function (req, res) {
         message: 'Помилка. Пароль не підходить',
       })
     }
-    //.......
-    Confirm.create(user.email)
-    //......
-    const session = Session.create(user)
+    if (!user.isConfirm) {
+      Confirm.create(user.email)
+    }
 
+    const session = Session.create(user)
     return res.status(200).json({
       message: 'Вхід виконано',
       session,
