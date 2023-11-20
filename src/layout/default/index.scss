@@ -35,6 +35,19 @@ body {
 		background-repeat: no-repeat;
 		background-position: top right;
 	}
+	&--top {
+		display: flex;
+		flex-direction: column;
+
+	}
+	&__divider{
+		display: block;
+		background-color: s.color(border);
+		border: none;
+		width: 100%;
+		margin: 0;
+		height: 1px;
+	}
 	&__section {
 		display: flex;
 		flex-direction: column;

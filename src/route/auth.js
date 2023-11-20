@@ -12,6 +12,16 @@ User.create({
   password: 123,
   role: 1,
 })
+User.create({
+  email: 'admin@mail.com',
+  password: 123,
+  role: 2,
+})
+User.create({
+  email: 'developer@mail.com',
+  password: 123,
+  role: 3,
+})
 
 // ================================================================
 
@@ -327,10 +337,11 @@ router.post('/login', function (req, res) {
         message: 'Помилка. Пароль не підходить',
       })
     }
+    //...........
     if (!user.isConfirm) {
       Confirm.create(user.email)
     }
-
+    //....
     const session = Session.create(user)
     return res.status(200).json({
       message: 'Вхід виконано',
@@ -342,6 +353,7 @@ router.post('/login', function (req, res) {
     })
   }
 })
+// =============================================================
 
 // Підключаємо роутер до бек-енду
 module.exports = router

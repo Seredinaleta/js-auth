@@ -86,3 +86,14 @@
     
   }
 }
+
+.skeleton {
+  animation: skelenon-animation 1s infinite alternate;
+}
+
+@keyframes skelenon-animation {
+  from{
+    background-color: rgba(0,0,0,0.05);
+  }
+  to {background-color: rgba(0,0,0,0.15);}
+}
